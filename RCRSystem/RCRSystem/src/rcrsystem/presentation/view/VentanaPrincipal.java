@@ -1,7 +1,6 @@
 package rcrsystem.presentation.view;
 
 import Modelo.Usuario;
-import java.awt.Toolkit;
 import rcrsystem.presentation.view.VentIngresarRegCompra;
 import java.io.IOException;
 import javax.swing.ImageIcon;
@@ -14,7 +13,6 @@ import rcrsystem.presentation.controller.Compras_Controlador;
 import rcrsystem.presentation.controller.Editar_Inventario_Controlador;
 import rcrsystem.presentation.controller.Inventario_Controlador;
 import rcrsystem.presentation.controller.Materiales_Controlador;
-import rcrsystem.presentation.controller.Progreso_Administracion_Controlador;
 import rcrsystem.presentation.controller.Usuario_Controlador;
 import rcrsystem.presentation.controller.Ventas_Controlador;
 import rcrsystem.presentation.model.Cliente_Modelo;
@@ -209,11 +207,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rcrsystem/presentation/view/iconos/folder.png"))); // NOI18N
         jMenu1.setText("Archivo");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
-            }
-        });
 
         btn_cerrar_sesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rcrsystem/presentation/view/iconos/disconnect.png"))); // NOI18N
         btn_cerrar_sesion.setText("Cerrar Sesión");
@@ -335,87 +328,49 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_calculadoraActionPerformed
 
     private void btn_cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrar_sesionActionPerformed
-        Toolkit.getDefaultToolkit().beep();
-        int opcion = JOptionPane.showConfirmDialog(null, "¿Seguro que desea cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (opcion == JOptionPane.YES_OPTION) {
         this.setVisible(false);
         rcrsystem.Aplicacion.ae_usuario = new Usuario();
         rcrsystem.Aplicacion.ae_vista_principal = new VentanaInicio();
         rcrsystem.Aplicacion.ae_vista_principal.setController(new Usuario_Controlador());
         rcrsystem.Aplicacion.ae_vista_principal.setVisible(true);
-        }
     }//GEN-LAST:event_btn_cerrar_sesionActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-        int opcion = JOptionPane.showConfirmDialog(null, "¿Seguro que desea cerrar el programa?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (opcion == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
+        System.exit(0);
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        VentanaCarga a_carga = new VentanaCarga();
-        Progreso_Administracion_Controlador a_cont = new Progreso_Administracion_Controlador(a_carga,this);
-        a_cont.colocar_tipo(2);
-        a_cont.execute();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        VentanaCarga a_carga = new VentanaCarga();
-        Progreso_Administracion_Controlador a_cont = new Progreso_Administracion_Controlador(a_carga,this);
-        a_cont.colocar_tipo(1);
-        a_cont.execute();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        VentanaCarga a_carga = new VentanaCarga();
-        Progreso_Administracion_Controlador a_cont = new Progreso_Administracion_Controlador(a_carga,this);
-        a_cont.colocar_tipo(4);
-        a_cont.execute();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        VentanaCarga a_carga = new VentanaCarga();
-        Progreso_Administracion_Controlador a_cont = new Progreso_Administracion_Controlador(a_carga,this);
-        a_cont.colocar_tipo(3);
-        a_cont.execute();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu1ActionPerformed
-    
-    public void cargar_materiales(){
-    this.setVisible(false);
-        VentanaMaterial vista = new VentanaMaterial();
-        Material_Modelo modelo = new Material_Modelo();
-        Materiales_Controlador controlador = new Materiales_Controlador(vista, modelo);
-        vista.setVisible(true); 
-    }
-    
-    public void cargar_usuarios(){
         this.setVisible(false);
         VentanaAdminUsuarios vista = new VentanaAdminUsuarios();
         Usuario_Modelo modelo = new Usuario_Modelo();
         Admin_Usuario_Controlador controlador = new Admin_Usuario_Controlador(vista, modelo);
         vista.setVisible(true);
-    }
-     
-    public void cargar_clientes(){
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
-        VentanaAdminClientes vista = new VentanaAdminClientes();
-        Cliente_Modelo modelo = new Cliente_Modelo();
-        Admin_Cliente_Controlador controlador = new Admin_Cliente_Controlador(vista, modelo);
-        vista.setVisible(true);
-    }
-    
-    public void cargar_proveedores(){
+        VentanaMaterial vista = new VentanaMaterial();
+        Material_Modelo modelo = new Material_Modelo();
+        Materiales_Controlador controlador = new Materiales_Controlador(vista, modelo);
+        vista.setVisible(true);   // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.setVisible(false);
         VentanaAdminProveedor vista = new VentanaAdminProveedor();
         Proveedor_Modelo modelo = new Proveedor_Modelo();
         Admin_Proveedores_Controlador controlador = new Admin_Proveedores_Controlador(vista, modelo);
         vista.setVisible(true);
-    }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.setVisible(false);
+        VentanaAdminClientes vista = new VentanaAdminClientes();
+        Cliente_Modelo modelo = new Cliente_Modelo();
+        Admin_Cliente_Controlador controlador = new Admin_Cliente_Controlador(vista, modelo);
+        vista.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */

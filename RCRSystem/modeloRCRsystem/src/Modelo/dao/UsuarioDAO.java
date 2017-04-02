@@ -16,7 +16,7 @@ public class UsuarioDAO {
 
     public static int grabar(Usuario cnt) {
 
-        String sql = "INSERT INTO Usuarios (identificacion,nombre,numTelefono,puesto,contrasena) values ('"
+        String sql = "INSERT INTO Usuarios (identificacion,nombre,numTelefono,puesto,contraseña) values ('"
                 + cnt.getIdentificacion() + "' ,'"
                 + cnt.getNombre() + "',"
                 + cnt.getNumtelefono() + ", "
@@ -30,7 +30,7 @@ public class UsuarioDAO {
         String sql = "UPDATE Usuarios set nombre='" 
                 + cnt.getNombre() + "',numTelefono=" 
                 + cnt.getNumtelefono() + ",puesto=" 
-                + cnt.getPuesto() + ", contrasena= '" 
+                + cnt.getPuesto() + ", contraseña= '" 
                 + cnt.getContraseña() + "' where identificacion= '" 
                 + cnt.getIdentificacion() + "'";
         return db.executeUpdate(sql);
@@ -67,7 +67,7 @@ public class UsuarioDAO {
         if (Conexion.Conectar() != 0) {//si no  hay conexion a la base
             ResultSet rs = null;
             try {
-                rs = Conexion.getRegistros(UsuarioDAO.SELECCIONAR_TODO + " where identificacion=  '" + identificacion + "' and contrasena= '" + pass + "'");
+                rs = Conexion.getRegistros(UsuarioDAO.SELECCIONAR_TODO + " where identificacion=  '" + identificacion + "' and contraseña= '" + pass + "'");
                 if (rs.next()) {
                     cnt = new Usuario();
                     cnt.setIdentificacion(rs.getString(1));

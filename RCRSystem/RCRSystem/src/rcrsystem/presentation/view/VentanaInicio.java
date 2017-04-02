@@ -30,7 +30,7 @@ public class VentanaInicio extends javax.swing.JFrame implements java.util.Obser
         ventana= new VentanaCarga();
         labelUsuarioContraInco.setVisible(false);
         setIconImage(new ImageIcon(getClass().getResource("/rcrsystem/presentation/view/iconos/logoRCR.png")).getImage());
-        this.setResizable(false);
+this.setResizable(false);
         ((JPanel) getContentPane()).setOpaque(false);
         ImageIcon uno = new ImageIcon(this.getClass().getResource("/rcrsystem/presentation/view/iconos/fondo.jpg"));
         JLabel fondo = new JLabel();
@@ -142,9 +142,6 @@ public class VentanaInicio extends javax.swing.JFrame implements java.util.Obser
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
             }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                formKeyReleased(evt);
-            }
         });
 
         jPanel2.setOpaque(false);
@@ -163,11 +160,6 @@ public class VentanaInicio extends javax.swing.JFrame implements java.util.Obser
                 campoUserActionPerformed(evt);
             }
         });
-        campoUser.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                campoUserKeyPressed(evt);
-            }
-        });
 
         btnLogin.setText("Log In");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -179,11 +171,6 @@ public class VentanaInicio extends javax.swing.JFrame implements java.util.Obser
         campoContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoContraseñaActionPerformed(evt);
-            }
-        });
-        campoContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                campoContraseñaKeyPressed(evt);
             }
         });
 
@@ -258,6 +245,7 @@ public class VentanaInicio extends javax.swing.JFrame implements java.util.Obser
         Progreso_Autentificacion_Controlador carga = new Progreso_Autentificacion_Controlador(ventana);
         btnLogin.setEnabled(false);
          this.setVisible(false);
+          btnLogin.setEnabled(true);
         carga.execute();
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -288,31 +276,6 @@ public class VentanaInicio extends javax.swing.JFrame implements java.util.Obser
             p.execute();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2KeyPressed
-
-    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formKeyReleased
-
-    private void campoUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoUserKeyPressed
- char car = (char) evt.getKeyCode();
-        if (car == KeyEvent.VK_ENTER) {
-            ventana = new VentanaCarga();
-            Progreso_Autentificacion_Controlador p = new Progreso_Autentificacion_Controlador(ventana);
-            this.setVisible(false);
-            p.execute();
-        }            // TODO add your handling code here:
-    }//GEN-LAST:event_campoUserKeyPressed
-
-    private void campoContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoContraseñaKeyPressed
-
-      char car = (char) evt.getKeyCode();
-        if (car == KeyEvent.VK_ENTER) {
-            ventana = new VentanaCarga();
-            Progreso_Autentificacion_Controlador p = new Progreso_Autentificacion_Controlador(ventana);
-            this.setVisible(false);
-            p.execute();
-        }      
-    }//GEN-LAST:event_campoContraseñaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -353,7 +316,7 @@ public class VentanaInicio extends javax.swing.JFrame implements java.util.Obser
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JPasswordField campoContraseña;
     public javax.swing.JTextField campoUser;
     private javax.swing.JLabel jLabel1;

@@ -919,7 +919,7 @@ public class VentanaFacturaExportacion extends javax.swing.JDialog implements ja
             pesoNeto = pesoNeto + modelo.obtener_total_material_lista_empaque().obtener_fila_a(i).getPesoTotalV();
             pesoBruto = pesoBruto + modelo.obtener_total_material_lista_empaque().obtener_fila_a(i).getPesoTotalV();
         }
-        total = subTotal + Float.parseFloat(this.txtFlete.getText());
+        total = subTotal + Integer.parseInt(this.txtFlete.getText());
         //this.precio_JTextField.setText(String.valueOf(listaEmp.getPrecio()));
 //        if (modelo.obtener_errores().get("cantidad") != null) {
 //            this.cantidad_JTextField.setBorder(rcrsystem.application.BORDER_ERROR);

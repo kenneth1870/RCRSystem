@@ -6,7 +6,6 @@ import Modelo.Cliente;
 import Modelo.ListEmpaque_U_Bulto;
 import Modelo.ListaEmpaque;
 import Modelo.Material;
-import Modelo.TotalMaterialVendido;
 import Modelo.Venta;
 import Modelo.dao.BultoDAO;
 import Modelo.dao.ClienteDAO;
@@ -135,55 +134,22 @@ public class Ventas_Modelo extends java.util.Observable {
     }
 
     public void guardar_lista_empaque(ListaEmpaque listaEmpaque) throws Exception {
-         List<TotalMaterialVendido> l_material_vendido = new ArrayList();
         if (!ConductorDAO.existeConductor(listaEmpaque.getConductor().getId())) {
             ConductorDAO.grabar(listaEmpaque.getConductor());
         }
         ListaEmpaqueDAO.grabar(listaEmpaque);
-        for (int i =0;i< a_venta.size();i++) {
+        for (Venta v : a_venta) {
             ListEmpaque_U_Bulto lUb = new ListEmpaque_U_Bulto();
             lUb.setListE(listaEmpaque);
-            lUb.setBultoVendido(a_venta.get(i).getBulto());
+            lUb.setBultoVendido(v.getBulto());
             ListEmpaque_U_BultoDAO.grabar(lUb);
-            TotalMaterialVendidoDAO.procedureIngresarTotalMaterialVendido(a_venta.get(i).getBulto().getMaterial().getTmaterial().getCodigo(), listaEmpaque.getCodigoL(), a_venta.get(i).getBulto().getPeso());
-            BultoDAO.actualizar(a_venta.get(i).getBulto());
-            String aux =a_venta.get(i).getBulto().getMaterial().getCodigo().substring(1);
+            TotalMaterialVendidoDAO.procedureIngresarTotalMaterialVendido(v.getBulto().getMaterial().getTmaterial().getCodigo(), listaEmpaque.getCodigoL(), v.getBulto().getPeso());
+            BultoDAO.actualizar(v.getBulto());
+            String aux = v.getBulto().getMaterial().getCodigo().substring(1);
         }
-        //generarReporte(listaEmpaque.getCodigoL());
+        generarReporte(listaEmpaque.getCodigoL());
     }
-/*public int cacular_indices( List<TotalMaterialVendido> l_material_vendido, String c_material){
-int indice = -1;
-        for(int i=0;i<l_material_vendido.size();i++){
-        if (l_material_vendido.get(i).getMaterialVendido().getCodigo().equals(c_material)){
-        indice=i;
-        }
-        }
-        return indice;
-}
-    public void cargar_totales(List<Venta>  a_venta, List<TotalMaterialVendido> l_material_vendido, ListaEmpaque listaEmpaque ){
-        int indice=-1;
-        TotalMaterialVendido material_vendido = new TotalMaterialVendido();
-     for (Venta v : a_venta) {
-         indice=this.cacular_indices(l_material_vendido,v.getBulto().getMaterial().getTmaterial().getCodigo());
-        if(indice!=-1){
-        l_material_vendido.get(indice).setCantBultosV(l_material_vendido.get(indice).getCantBultosV()+1);
-       l_material_vendido.get(indice).setListEmp(this.a_actual);
-        l_material_vendido.get(indice).setPesoTotalV(l_material_vendido.get(indice).getPesoTotalV()+v.getBulto().getPeso());
-        }
-        else{
-            material_vendido= new TotalMaterialVendido();
-        material_vendido.setCantBultosV(1);
-        material_vendido.setListEmp(listaEmpaque);
-        material_vendido.setMaterialVendido(v.getBulto().getMaterial().getTmaterial());
-        material_vendido.setPesoTotalV(v.getBulto().getPeso());
-        l_material_vendido.add(material_vendido);
-        }
-     }
-     for (TotalMaterialVendido t : l_material_vendido ){
-   //  System.out.println(t.getCantBultosV()+" "+t.getListEmp().getCodigoL()+" "+t.getMaterialVendido().getNombre()+" "+t.getPesoTotalV()+" ");
-     }
-    }
-  */  
+
     public void generarReporte(int num) {
         try {
             Map parametros = new HashMap();

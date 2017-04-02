@@ -38,7 +38,6 @@ public class VentanaEdicionInventario extends javax.swing.JDialog implements jav
         jLabel3 = new javax.swing.JLabel();
         aceptar_JButton = new javax.swing.JButton();
         cancelar_JButton = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
 
         setTitle("Editar");
 
@@ -103,18 +102,16 @@ public class VentanaEdicionInventario extends javax.swing.JDialog implements jav
                                 .addComponent(precio_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nombre_label)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nombre_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(aceptar_JButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cancelar_JButton))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(nombre_label)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(nombre_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(43, Short.MAX_VALUE))
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(aceptar_JButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cancelar_JButton)
-                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,13 +129,11 @@ public class VentanaEdicionInventario extends javax.swing.JDialog implements jav
                     .addComponent(jLabel2)
                     .addComponent(cantidad_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aceptar_JButton)
                     .addComponent(cancelar_JButton))
-                .addContainerGap())
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,9 +144,7 @@ public class VentanaEdicionInventario extends javax.swing.JDialog implements jav
     }//GEN-LAST:event_cantidad_JTextFieldActionPerformed
 
     private void aceptar_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar_JButtonActionPerformed
-        this.aceptar_JButton.setEnabled(false);
-        controller.modificar();   
-        this.aceptar_JButton.setEnabled(true);
+        controller.modificar();    // TODO add your handling code here:
     }//GEN-LAST:event_aceptar_JButtonActionPerformed
 
     private void cancelar_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar_JButtonActionPerformed
@@ -209,7 +202,6 @@ public class VentanaEdicionInventario extends javax.swing.JDialog implements jav
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JSeparator jSeparator1;
     public javax.swing.JTextField nombre_JTextField;
     public javax.swing.JLabel nombre_label;
     public javax.swing.JTextField precio_JTextField;

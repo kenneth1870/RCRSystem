@@ -10,12 +10,7 @@ public class TotalMaterialVendido {
     float importe;
 
     public TotalMaterialVendido() {
-materialVendido=new Material();
-    listEmp=new ListaEmpaque();
-    cantBultosV=0;
-    pesoTotalV=0;
-    precioUnid=0;
-    importe=0;
+
     }
 
     public TotalMaterialVendido(Material materialVendido, ListaEmpaque listEmp, int cantBultosV, float pesoTotalV, float precioUnid, float importe) {
