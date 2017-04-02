@@ -32,8 +32,9 @@ public class Progreso_Venta_Controlador extends SwingWorker<Integer, String> {
             this.a_ventas.agregarBulto();
         }
         if (a_tipo == 3) {
-            this.a_ventas.generarListaEmpaque();
+            this.a_ventas.generarListaEmpaque(this.a_ventana);
         }
+        
         obtener_ventana().setVisible(false);
         obtener_ventana().jProgressBar1.setIndeterminate(false);
         return 0;

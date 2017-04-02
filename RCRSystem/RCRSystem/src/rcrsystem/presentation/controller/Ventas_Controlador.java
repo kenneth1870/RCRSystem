@@ -105,10 +105,9 @@ public class Ventas_Controlador {
         return venta;
     }
 
-    public boolean validar_lista_empaque() {
+    public int validar_lista_empaque() {
         ListaEmpaque venta = new ListaEmpaque();
         try {
-
             Conductor conductor = new Conductor();
             a_modelo.eliminar_errores();
             venta.setCodigoL(Integer.parseInt(a_vista.venta_jLabel.getText()));
@@ -155,7 +154,11 @@ public class Ventas_Controlador {
                 }
                 if (a_vista.año_jTextField.getText().length() == 0) {
                     a_modelo.obtener_errores().put("añoT", "Debe llenar este campo");
-                } else {
+                } else if(a_vista.año_jTextField.getText().length() < 4){
+                 a_modelo.obtener_errores().put("añoT2", "Error en el formato, debe ser aaaa. Ejemplo: 2017");
+                }
+                
+                else {
                     String d = (String) a_vista.dia_jComboBox.getSelectedItem();
                     String m = numero_mes();
                     String a = a_vista.año_jTextField.getText();
@@ -190,24 +193,35 @@ public class Ventas_Controlador {
             } else {
                 venta.setChasis(a_vista.chasis_jTextField.getText());
             }
+            
             if (!a_modelo.obtener_errores().isEmpty() || a_modelo.obtener_venta().isEmpty()) {
                 a_modelo.colocar_actual(venta);
-                return false;
+               if(!a_modelo.obtener_errores().isEmpty())
+                return 1;
+               else
+                   return 2;
             } else {
                 a_modelo.colocar_actual(venta);
-                return true;
+                return 0;
             }
         } catch (Exception e) {
             System.out.print(e);
         }
-        return false;
-    }
+        
+        return 0;
+        }
+    
 
     public void reportar_errores() {
         a_modelo.colocar_mensaje("¡Hay Errores!");
         a_modelo.colocar_actual(a_modelo.obtener_actual());
     }
 
+    public void reportar_error_venta_nula() {
+        a_modelo.colocar_mensaje("¡No ha ingresado bultos en la tabla!");
+        a_modelo.colocar_actual(a_modelo.obtener_actual());
+    }
+    
     public void generar_lista_empaque() {
         ListaEmpaque venta = new ListaEmpaque();
         try {
@@ -326,13 +340,20 @@ public class Ventas_Controlador {
         }
     }
 
-    public void guardar_lista_empaque() throws Exception {
+    public void guardar_lista_empaque() {
+        try{
         a_modelo.guardar_lista_empaque(a_modelo.obtener_actual());
+        }catch(Exception e){
+        
+        }
     }
 
     public void procesar_lista_empaque(VentanaCarga ventana) {
+        this.a_vista.setVisible(false);
+        this.guardar_lista_empaque();
         ventana.setVisible(false);
         Toolkit.getDefaultToolkit().beep();
+        this.a_vista.setVisible(true);
         JOptionPane.showMessageDialog(null, "¡Lista de empaque registrada correctamente!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
         this.limpiar_datos();
         this.limpiar_bulto();
@@ -341,22 +362,15 @@ public class Ventas_Controlador {
             this.limpiar_datos();
             this.limpiar_bulto();
             int numFactura = Integer.parseInt(a_vista.venta_jLabel.getText());
-            if (rcrsystem.Aplicacion.ae_modelo_factura.getListas().isEmpty()) {
-                a_vista.venta_jLabel.setText(String.valueOf(numFactura));
-            } else {
-                int numero = rcrsystem.Aplicacion.ae_modelo_factura.getListas().size() + numFactura;
-                a_vista.venta_jLabel.setText(String.valueOf(numero));
-            }
-        } else if (rcrsystem.Aplicacion.ae_modelo_factura.getListas().isEmpty()) {
+            a_vista.venta_jLabel.setText(String.valueOf(numFactura));
+          }
+        else {
             eliminar_errores();
             limpiar_bulto();
             limpiar_datos();
             a_vista.setVisible(false);
             Progreso_Menu_Prin_Controlador v = new Progreso_Menu_Prin_Controlador(new VentanaCarga());
             v.execute();
-        } else {
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(a_vista, "¡Aún hay listas de empaque por facturar!", "", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -407,7 +421,7 @@ public class Ventas_Controlador {
             material = bulto.getMaterial().getCodigo();
             String aux = material.substring(1);
             inv = InventarioDAO.obtenerInventario(aux);
-            if (inv.getCantidad()> 2000 && bulto.getEstado() == 1) {
+            if (inv.getCantidad()>= 20000 && bulto.getEstado() == 1) {
                 this.a_vista.material_bultojTextField.setText(bulto.getMaterial().getTmaterial().getNombre());
                 if (bulto.getTipo() == 1) {
                     a_vista.tipo_boton.setText("Paca");
@@ -418,15 +432,20 @@ public class Ventas_Controlador {
                 a_vista.agregarbtn.setEnabled(true);
                 a_vista.jButton1.setEnabled(true);
             } else {
-                carga.setVisible(false);
+               
                 a_vista.jButton1.setEnabled(true);
                 Toolkit.getDefaultToolkit().beep();
+                 carga.setVisible(false);
+                if(inv.getCantidad()<2000){
                 JOptionPane.showMessageDialog(null, "¡Material menor de 20 tons!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                JOptionPane.showMessageDialog(null, "¡El bulto no está disponible para la venta!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                }
                 this.limpiar_bulto();
             }
         } else {
-            carga.setVisible(false);
             a_vista.jButton1.setEnabled(true);
+             carga.setVisible(false);
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "¡El bulto no existe!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             this.limpiar_bulto();

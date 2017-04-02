@@ -77,5 +77,5 @@ public class Database {
     private static final String PUERTO = "5432";
     private static final String USUARIO = "postgres";
     private static final String CLAVE = "root";
-    private static final String BASEDATOS = "ReciclaCR";
+    private static final String BASEDATOS = "RCRSystemDB";
 }
