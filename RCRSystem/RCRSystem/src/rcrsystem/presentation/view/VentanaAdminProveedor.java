@@ -66,7 +66,7 @@ public class VentanaAdminProveedor extends javax.swing.JFrame implements java.ut
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Administración de usuarios");
+        setTitle("Administración de proveedores");
         setLocation(new java.awt.Point(0, 0));
 
         jPanel1.setBackground(new java.awt.Color(27, 82, 156));

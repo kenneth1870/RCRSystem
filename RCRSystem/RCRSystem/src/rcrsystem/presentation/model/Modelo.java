@@ -46,7 +46,7 @@ public class Modelo extends java.util.Observable {
 
     public void revisar_inventario(List<Inventario> rows) {
         for (Inventario inv : rows) {
-            if (inv.getCantidad() > 21000) { //si tiene mas de 21 toneladas está para una venta
+            if (inv.getCantidad() >= 20000) { //si tiene mas de 20 toneladas está para una venta
                 a_reposiciones.add(inv.getMaterial().getNombre());
             }
         }

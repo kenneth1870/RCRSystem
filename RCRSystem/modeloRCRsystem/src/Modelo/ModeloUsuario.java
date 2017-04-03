@@ -45,7 +45,7 @@ public class ModeloUsuario extends java.util.Observable {
     public String validarIngreso(String identificacion, String pass) {
         Usuario miUsuario = UsuarioDAO.getUsuario(identificacion, pass);
         
-        if (!"".equals(identificacion) || !"".equals(pass)) {
+        if (!identificacion.equals("") || !pass.equals("")) {
             if (miUsuario != null) {
                 if (pass.equals(miUsuario.getContraseña())) {
                     this.setUsuarioCurrent(miUsuario);

@@ -81,7 +81,7 @@ public class TotalMaterialCompradoDAO {
 
     public static String procedureIngresarTotalMaterialComprado(String tipoBultoComprado, int regCompra, float peso) {
         String res = "";
-        ResultSet rs = Conexion.getRegistros("SELECT ingresarTotalMaterialComprado('" + tipoBultoComprado + "'," + regCompra + "," + peso + ");");
+        ResultSet rs = Conexion.getRegistros("SELECT ingresarTotalMaterialComprado('" + tipoBultoComprado + "'," + regCompra + "," + peso + ")");
         try {
 
             if (rs.next()) {

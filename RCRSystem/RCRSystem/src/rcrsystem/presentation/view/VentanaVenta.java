@@ -991,11 +991,6 @@ public class VentanaVenta extends javax.swing.JFrame implements java.util.Observ
     }//GEN-LAST:event_pesoNeto_jTextFieldActionPerformed
 
     private void confirmar_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmar_jButtonActionPerformed
-        /*ventana= new VentanaCarga();
-        Progreso_Venta_Controlador p = new Progreso_Venta_Controlador(ventana, this);
-        //this.setVisible(false);
-        p.colocar_tipo(3);
-        p.execute();     */        // TODO add your handling code here:
         pregenerarListaEmpaque();
     }//GEN-LAST:event_confirmar_jButtonActionPerformed
 
@@ -1072,15 +1067,23 @@ public class VentanaVenta extends javax.swing.JFrame implements java.util.Observ
     }//GEN-LAST:event_placa_jTextFieldActionPerformed
 
     private void btn_cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrar_sesionActionPerformed
+        Toolkit.getDefaultToolkit().beep();
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Seguro que desea cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (opcion == JOptionPane.YES_OPTION) {
         this.setVisible(false);
         rcrsystem.Aplicacion.ae_usuario = new Usuario();
         rcrsystem.Aplicacion.ae_vista_principal = new VentanaInicio();
         rcrsystem.Aplicacion.ae_vista_principal.setController(new Usuario_Controlador());
         rcrsystem.Aplicacion.ae_vista_principal.setVisible(true);
+        }
     }//GEN-LAST:event_btn_cerrar_sesionActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-        System.exit(0);
+        Toolkit.getDefaultToolkit().beep();
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Seguro que desea cerrar el programa?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (opcion == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void btn_calculadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calculadoraActionPerformed
@@ -1100,14 +1103,10 @@ public class VentanaVenta extends javax.swing.JFrame implements java.util.Observ
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        if (rcrsystem.Aplicacion.ae_modelo_factura.getListas().isEmpty()) {
+     
             this.setVisible(false);
             Progreso_Menu_Prin_Controlador v = new Progreso_Menu_Prin_Controlador(ventana);
             v.execute();
-        } else {
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(this, "¡Aún hay listas de empaque por facturar!", "", JOptionPane.INFORMATION_MESSAGE);
-        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void facturar_jMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturar_jMenuActionPerformed
@@ -1174,24 +1173,26 @@ public class VentanaVenta extends javax.swing.JFrame implements java.util.Observ
     }
 
     public void pregenerarListaEmpaque() {
-        if (controlador.validar_lista_empaque()) {
+        if (controlador.validar_lista_empaque()==0) {
             int opcion = JOptionPane.showConfirmDialog(null, "¿Seguro que desea ingresar la lista de empaque?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (opcion == JOptionPane.YES_OPTION) {
                 ventana = new VentanaCarga();
                 Progreso_Venta_Controlador p = new Progreso_Venta_Controlador(ventana, this);
-                p.colocar_tipo(3);
-                p.execute();
-                controlador.procesar_lista_empaque(ventana);
+               p.colocar_tipo(3);
+              p.execute();
             }
-        } else {
+        } else if (controlador.validar_lista_empaque()==1){
 
             controlador.reportar_errores();
         }
+        else{
+         controlador.reportar_error_venta_nula();
+        }
     }
 
-    public void generarListaEmpaque() {
+    public void generarListaEmpaque(VentanaCarga ventana) {
         try {
-            controlador.guardar_lista_empaque();
+            controlador.procesar_lista_empaque(ventana);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -1310,10 +1311,15 @@ public class VentanaVenta extends javax.swing.JFrame implements java.util.Observ
             this.mes_jComboBox.setSelectedIndex(0);
             this.año_jTextField.setText("");
         }
-        if (modelo.obtener_errores().get("año") != null) {
+        if (modelo.obtener_errores().get("añoT") != null) {
             this.año_jTextField.setBorder(this.BORDER_ERROR);
-            año_jTextField.setToolTipText(modelo.obtener_errores().get("año"));
-        } else {
+            año_jTextField.setToolTipText(modelo.obtener_errores().get("añoT"));
+        } 
+        else if(modelo.obtener_errores().get("añoT2") != null){
+         this.año_jTextField.setBorder(this.BORDER_ERROR);
+            año_jTextField.setToolTipText(modelo.obtener_errores().get("añoT2"));
+        }
+        else {
             if (!current.getFecha().equals("")) {
                 this.año_jTextField.setText(current.getFecha().substring(6));
             } else {
@@ -1397,8 +1403,8 @@ public class VentanaVenta extends javax.swing.JFrame implements java.util.Observ
             pesoNeto_jTextField.setToolTipText("");
         }
         this.pesoBruto_jLabel.setText(String.valueOf(controlador.obtener_peso_bruto()));
+        this.pesoNeto_jTextField.setText(String.valueOf(controlador.obtener_peso_bruto()));
         controlador.definir_cliente(current.getCliente());
-
         if (current.getMedioTransporte() == 1) {
             this.jPanel2.setVisible(false);
             this.transportista_jPanel.setVisible(true);

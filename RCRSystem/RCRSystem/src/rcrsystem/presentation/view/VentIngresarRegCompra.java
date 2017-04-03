@@ -735,15 +735,23 @@ int opcion = JOptionPane.showConfirmDialog(null, "¿Seguro que desea ingresar la
     }//GEN-LAST:event_btn_abrir_ventanaActionPerformed
 
     private void btn_cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrar_sesionActionPerformed
-      this.setVisible(false);
-       rcrsystem.Aplicacion.ae_usuario=new Usuario();
-       rcrsystem.Aplicacion.ae_vista_principal = new VentanaInicio();
+        Toolkit.getDefaultToolkit().beep();
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Seguro que desea cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (opcion == JOptionPane.YES_OPTION) {
+        this.setVisible(false);
+        rcrsystem.Aplicacion.ae_usuario = new Usuario();
+        rcrsystem.Aplicacion.ae_vista_principal = new VentanaInicio();
         rcrsystem.Aplicacion.ae_vista_principal.setController(new Usuario_Controlador());
         rcrsystem.Aplicacion.ae_vista_principal.setVisible(true);
+        }
     }//GEN-LAST:event_btn_cerrar_sesionActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-        System.exit(0);
+        Toolkit.getDefaultToolkit().beep();
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Seguro que desea cerrar el programa?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (opcion == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void btn_calculadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calculadoraActionPerformed

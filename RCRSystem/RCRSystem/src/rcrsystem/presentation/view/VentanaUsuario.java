@@ -272,7 +272,10 @@ public class VentanaUsuario extends javax.swing.JDialog implements java.util.Obs
     }//GEN-LAST:event_jPasswordField_normalKeyTyped
 
     private void jPasswordField_confirmarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField_confirmarKeyTyped
-        // TODO add your handling code here:
+        if (this.jPasswordField_confirmar.getText().length() == 6) {
+            Toolkit.getDefaultToolkit().beep();
+            evt.consume();
+        }
     }//GEN-LAST:event_jPasswordField_confirmarKeyTyped
 
     /**
