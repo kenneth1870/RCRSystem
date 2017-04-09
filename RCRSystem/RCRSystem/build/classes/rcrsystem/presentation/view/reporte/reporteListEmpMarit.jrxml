@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="233"/>
+	<parameter name="codigoListEm" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select  ListaEmpaque.codigoListEm as "Número",
+	ListaEmpaque.fechaLE as "Fecha",
+	ListaEmpaque.medioTransporte as "Medio transporte",
+	Cliente.nombreC as "Cliente",
+	ListaEmpaque.destino as "Destino",
+	ListaEmpaque.pesoBruto as "Peso bruto",
+	ListaEmpaque.pesoNeto as "Peso Neto",
+	Conductor.nombreConductor as "Conductor",
+	ListaEmpaque.placa as "Placa",
+	ListaEmpaque.marca as "Marca",
+	ListaEmpaque.chasis as "Chasis",
+	ListaEmpaque.furgon as "Furgon"
+from ListaEmpaque,Conductor,Cliente
+
+where ListaEmpaque.clienteLE = Cliente.codigoC
+     and ListaEmpaque.conductor = Conductor.identificacionConductor
+      and ListaEmpaque.codigoListEm = $P{codigoListEm};]]>
+	</queryString>
+	<field name="Número" class="java.lang.Integer"/>
+	<field name="Fecha" class="java.sql.Date"/>
+	<field name="Medio transporte" class="java.lang.Integer"/>
+	<field name="Cliente" class="java.lang.String"/>
+	<field name="Destino" class="java.lang.String"/>
+	<field name="Peso bruto" class="java.lang.Double"/>
+	<field name="Peso Neto" class="java.lang.Double"/>
+	<field name="Conductor" class="java.lang.String"/>
+	<field name="Placa" class="java.lang.String"/>
+	<field name="Marca" class="java.lang.String"/>
+	<field name="Chasis" class="java.lang.String"/>
+	<field name="Furgon" class="java.lang.String"/>
+	<title>
+		<band height="188" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="8" width="179" height="71"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\RCRSystem\\RCRSystem\\RCRSystem\\src\\rcrsystem\\presentation\\view\\iconos\\logoRCR.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="79" width="160" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTA DE EMPAQUE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="142" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ NÚMERO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="142" width="202" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{Número}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="162" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="162" width="202" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{Fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="101" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Envío marítimo]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="1" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="168" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="20" width="202" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Destino}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Destino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="65" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Placa]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="65" width="202" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Placa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="85" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="85" width="202" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Marca}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="105" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Chasis]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="105" width="202" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Chasis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="125" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Furgon]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="125" width="202" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Furgon}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="45" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Transporte:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="0" width="202" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Cliente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+		</band>
+		<band height="50">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="31"/>
+				<subreportParameter name="codListE">
+					<subreportParameterExpression><![CDATA[$P{codigoListEm}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA["C:\\RCRSystem\\RCRSystem\\RCRSystem\\src\\rcrsystem\\presentation\\view\\reporte\\subreportListEmp.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Peso bruto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Peso Neto]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="0" width="200" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{Peso Neto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="20" width="200" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{Peso bruto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

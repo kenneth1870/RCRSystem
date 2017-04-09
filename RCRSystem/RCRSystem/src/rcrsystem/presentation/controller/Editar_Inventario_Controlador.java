@@ -44,13 +44,13 @@ public class Editar_Inventario_Controlador {
         if (a_modelo.otener_errores().isEmpty()) {
             try {
                 a_modelo_logico.actualizar(inventario);
+                a_vista.setVisible(false);
                 a_modelo.colocar_mensaje("¡Material modificado correctamente!");
                 a_modelo.colocar_inventario_actual(inventario);
                 a_modelo.colocar_mensaje("");
                 List<Inventario> rowsMod = a_modelo_logico.obtenerInventario();
                 a_modelo.colocar_inventario(rowsMod, 1);
                 a_modelo.colocar_inventario_actual(new Inventario());
-                a_vista.setVisible(false);
                 a_modelo.limpiar_errores();
                 a_modelo.colocar_reposiciones(new ArrayList());
             } catch (Exception e) {

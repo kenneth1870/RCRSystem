@@ -3,9 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Pablo/Descargas/RCRSystem%20v3.2.3/RCRSystem%20-%20copia/RCRSystem/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/view/VentConsultaMatInv.java</file>
-            <file>file:/D:/Pablo/Descargas/RCRSystem%20v3.2.3/RCRSystem%20-%20copia/RCRSystem/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/controller/Admin_Cliente_Controlador.java</file>
-            <file>file:/D:/Pablo/Descargas/RCRSystem%20v3.2.3/RCRSystem%20-%20copia/RCRSystem/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/Aplicacion.java</file>
+            <file>file:/C:/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/model/Ventas_Modelo.java</file>
+            <file>file:/C:/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/controller/Compras_Controlador.java</file>
         </group>
     </open-files>
 </project-private>

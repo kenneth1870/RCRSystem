@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class Conexion {
 
-    public static String bd = "ReciclaCR";
+    public static String bd = "RCRSystemDB";
     public static String login = "postgres";
     public static String password = "root";
     public static String url = "jdbc:postgresql://localhost:5432/" + Conexion.bd;
@@ -23,8 +23,8 @@ public class Conexion {
     private static final String SERVIDOR = "localhost";
     private static final String PUERTO = "5432";
     private static final String USUARIO = "postgres";
-    private static final String CLAVE = "11251995";
-    private static final String BASEDATOS = "ReciclaCR";
+    private static final String CLAVE = "root";
+    private static final String BASEDATOS = "RCRSystemDB";
 
     public static int Conectar() {
         int i = 0;

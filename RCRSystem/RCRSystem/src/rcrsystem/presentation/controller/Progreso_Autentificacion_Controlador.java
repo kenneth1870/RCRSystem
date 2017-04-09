@@ -15,7 +15,7 @@ public class Progreso_Autentificacion_Controlador extends SwingWorker< Integer, 
         obtener_ventana().jProgressBar1.setIndeterminate(true);
 
         rcrsystem.Aplicacion.ae_vista_principal.login();
-
+        rcrsystem.Aplicacion.ae_vista_principal.btnLogin.setEnabled(true);
         obtener_ventana().jProgressBar1.setIndeterminate(false);
         return 0;
     }
