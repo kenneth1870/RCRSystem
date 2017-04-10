@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -181,12 +182,14 @@ public class Compras_Controlador {
         }
     }
 
-    public void generar_reporte(int numeroCompa) {
+     public void generar_reporte(int numeroCompa) {
         try {
             Map parametros = new HashMap();
-            parametros.put("numCompra", numeroCompa);
+            parametros.put("numCompra", numeroCompa); 
             JasperReport contenido = (JasperReport) JRLoader.loadObject(getClass().getResource("/rcrsystem/presentation/view/reporte/reporteCompra.jasper"));
-            JasperPrint imprimir = JasperFillManager.fillReport(contenido, parametros, Conexion.getConnection(null, null, null));
+         // JasperReport contenido = JasperCompileManager.compileReport("C:/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/view/reporte/reporteCompra
+          JasperPrint imprimir = JasperFillManager.fillReport(contenido, parametros, Conexion.getConnection(null, null, null));
+       
             JasperViewer v = new JasperViewer(imprimir, false);
             v.setTitle("Reporte de ingreso");
             v.setVisible(true);

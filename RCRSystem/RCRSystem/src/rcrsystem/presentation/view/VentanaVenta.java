@@ -710,7 +710,7 @@ public class VentanaVenta extends javax.swing.JFrame implements java.util.Observ
                     .addComponent(jLabel11)
                     .addComponent(pesoNeto_jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         eliminar_jButton.setBackground(new java.awt.Color(255, 0, 0));

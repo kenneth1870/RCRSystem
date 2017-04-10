@@ -149,7 +149,12 @@ public class Ventas_Modelo extends java.util.Observable {
             BultoDAO.actualizar(a_venta.get(i).getBulto());
             String aux =a_venta.get(i).getBulto().getMaterial().getCodigo().substring(1);
         }
-        //generarReporte(listaEmpaque.getCodigoL());
+        if(listaEmpaque.getMedioTransporte()==1){
+        generarReporteMarit(listaEmpaque.getCodigoL());
+        }
+        else{
+        generarReporteTerr(listaEmpaque.getCodigoL());
+        }
     }
 /*public int cacular_indices( List<TotalMaterialVendido> l_material_vendido, String c_material){
 int indice = -1;
@@ -183,13 +188,30 @@ int indice = -1;
    //  System.out.println(t.getCantBultosV()+" "+t.getListEmp().getCodigoL()+" "+t.getMaterialVendido().getNombre()+" "+t.getPesoTotalV()+" ");
      }
     }
-  */  
-    public void generarReporte(int num) {
+  */
+      public void generarReporteTerr(int num) {
         try {
             Map parametros = new HashMap();
             parametros.put("codigoListEm", num);
-            JasperReport contenido = (JasperReport) JRLoader.loadObject(getClass().getResource("/rcrsystem/presentation/view/reporte/reportLisEmp.jasper"));
+            JasperReport contenido = (JasperReport) JRLoader.loadObject(getClass().getResource("/rcrsystem/presentation/view/reporte/reporteListEmpTerr.jasper"));
+        
             JasperPrint imprimir = JasperFillManager.fillReport(contenido, parametros, Conexion.getConnection(null, null, null));
+          
+            JasperViewer v = new JasperViewer(imprimir, false);
+            v.setTitle("Lista de Empaque");
+            v.setVisible(true);
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(null, "Error al mostrar la lista de empaque");
+            Logger.getLogger(Compras_Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void generarReporteMarit(int num) {
+        try {
+            Map parametros = new HashMap();
+            parametros.put("codigoListEm", num);
+            JasperReport contenido = (JasperReport) JRLoader.loadObject(getClass().getResource("/rcrsystem/presentation/view/reporte/reporteListEmpMarit.jasper"));
+            JasperPrint imprimir = JasperFillManager.fillReport(contenido, parametros, Conexion.getConnection(null, null, null));
+           
             JasperViewer v = new JasperViewer(imprimir, false);
             v.setTitle("Lista de Empaque");
             v.setVisible(true);

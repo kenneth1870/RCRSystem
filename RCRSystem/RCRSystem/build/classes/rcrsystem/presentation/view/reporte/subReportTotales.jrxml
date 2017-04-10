@@ -16,7 +16,7 @@ where TotalMaterialComprado.materialComprado = Materiales.codigoMaterial
 	<field name="Material" class="java.lang.String"/>
 	<field name="Total" class="java.lang.Double"/>
 	<columnHeader>
-		<band height="23" splitType="Stretch">
+		<band height="65" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="2" width="168" height="20"/>
 				<textElement/>

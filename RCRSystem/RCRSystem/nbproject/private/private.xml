@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USER/Downloads/RCRSystem%20v3.2.5/RCRSystem/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/view/VentanaEdicionInventario.java</file>
-            <file>file:/C:/Users/USER/Downloads/RCRSystem%20v3.2.5/RCRSystem/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/model/Ventas_Modelo.java</file>
-            <file>file:/C:/Users/USER/Downloads/RCRSystem%20v3.2.5/RCRSystem/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/controller/Progreso_Venta_Controlador.java</file>
-            <file>file:/C:/Users/USER/Downloads/RCRSystem%20v3.2.5/RCRSystem/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/controller/Ventas_Controlador.java</file>
-            <file>file:/C:/Users/USER/Downloads/RCRSystem%20v3.2.5/RCRSystem/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/view/VentanaInventario.java</file>
-            <file>file:/C:/Users/USER/Downloads/RCRSystem%20v3.2.5/RCRSystem/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/view/VentanaVenta.java</file>
-            <file>file:/C:/Users/USER/Downloads/RCRSystem%20v3.2.5/RCRSystem/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/view/VentanaFacturaExportacion.java</file>
+            <file>file:/C:/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/model/Ventas_Modelo.java</file>
+            <file>file:/C:/RCRSystem/RCRSystem/RCRSystem/src/rcrsystem/presentation/controller/Compras_Controlador.java</file>
         </group>
     </open-files>
 </project-private>

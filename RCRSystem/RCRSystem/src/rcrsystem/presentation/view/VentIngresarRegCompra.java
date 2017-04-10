@@ -695,8 +695,9 @@ int opcion = JOptionPane.showConfirmDialog(null, "¿Seguro que desea ingresar la
             if (opcion == JOptionPane.YES_OPTION) {
         ventana = new VentanaCarga();
         Progreso_Confirmar_Reg_Compra p = new Progreso_Confirmar_Reg_Compra(ventana, this);
-        //this.setVisible(false);
+        this.setVisible(false);
         p.execute();
+        //  this.confirmar();
             }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
